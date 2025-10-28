@@ -56,3 +56,24 @@ El programa divide el archivo de entrada en **bloques de 1 MiB** y asigna cada b
 ```bash
 diff -s prueba.txt restaurado.txt
 # → Files are identical
+
+
+## 🧱 Instrucciones para compilar y ejecutar
+
+### 🔹 1. Instalar dependencias
+Asegúrate de tener compilador y zlib instalados:
+```bash
+sudo apt update
+sudo apt install -y build-essential zlib1g-dev
+
+### Para compilar
+g++ -std=c++17 -O2 paralelo.cpp -o lab7 -lpthread -lz
+echo -e "1\n4\nprueba.txt\nprueba.pzip\n" | ./lab7
+
+###Comprimir
+echo -e "1\n4\nprueba.txt\nprueba.pzip\n" | ./lab7
+
+###Descomprimir
+echo -e "2\n4\nprueba.pzip\nrestaurado.txt\n" | ./lab7
+
+
